@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Kyber Portal</title>
+    <link rel="stylesheet" href="portal.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+
+    <style>
+        * {
+            font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+        }
+
+    </style>
+
+</head>
+
+
+
+
+<body style="background-color: #3A4856;">
+
+    <!-- showdown converts Markdown text into Html and is loaded globally into window.showdown -->
+    <script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.1/dist/showdown.min.js"></script>
+
+    <!-- custom controls. Section requires Section-Field -->
+    <script src='./section-field/section-field.js' type="module"></script>
+    <script src='./section/section.js' type="module"></script>
+    <script src='./main.js' type="module"></script>
+
+    <div style="margin: 3em;">
+
+        <div  style=" color: white; font-size: xx-large;">
+
+            <p><b>Kyber</b> is a key encapsulation mechanism (KEM), whose security is based on the hardness of solving the
+            learning-with-errors (LWE) problem over module lattices. Kyber is one of the selected algorithms in the NIST
+            post-quantum cryptography project.​</p>
+
+            <label>How does it work?</label>
+            ​<iframe src="https://cryptopedia.dev/posts/kyber/" title="YouTube video player" frameborder="0" style="display: block;width: 100%;height: 800px;"></iframe>
+
+            <p>This page illustrates the use of Kyber to encrypt some data…</p>
+        </div>
+
+        <br><br>
+        <br><br>
+        <br><br>
+
+
+        <div style="display: flex; gap: 3em">
+
+            <label style="flex: 1; font-size: x-large; font-weight: 800;">Alice</label>
+
+            <label style="flex: 1; font-size: x-large; font-weight: 800;">Bob</label>
+
+        </div>
+
+
+        <br><br>
+        <hr><br><br>
+
+
+
+
+        <div style="display: flex; gap: 3em">
+
+            <custom-section id='generateAlice' button="Generate Alice's Key" style="flex: 1;">
+                <section-field label placeholder="Alice's public key">
+                </section-field>
+                <section-field label placeholder="Alice's private key">
+                </section-field>
+                <doc>
+                    ## Generate Alice's Keypair
+                    Generates a new Kyber public/private key pair for Alice
+                    <br><br>
+                </doc>
+            </custom-section>
+
+            <custom-section id='generateBob' button="Generate Bob's Key" style="flex: 1;">
+                <section-field label placeholder="Bob's public key"></section-field>
+                <section-field label placeholder="Bob's private key"></section-field>
+                <doc>
+                    ## Generate Bob's Keypair
+                    Generates a new Kyber public/private key pair for Bob
+                    <br><br>
+                </doc>
+            </custom-section>
+
+        </div>
+
+        <br><br>
+        <hr><br><br>
+
+        <div style="display: flex; gap: 2em">
+
+            <custom-section id='generateSecret' button="Generate & Encrypt Shared Secret" style="flex: 1;">
+                <section-field label placeholder="Bob's Public Key">
+                </section-field>
+                <section-field label placeholder="Shared Secret">
+                </section-field>
+                <section-field label placeholder="Encrypted Shared Secret">
+                </section-field>
+                <doc>
+                    ## Generate Alice's Keypair
+                    Generates a new Kyber public/private key pair for Alice
+                    <br><br>
+                </doc>
+            </custom-section>
+
+            <div style="flex: 1;"></div>
+
+        </div>
+
+        <br><br>
+        <hr><br><br>
+
+        <div style="display: flex; gap: 2em">
+
+            <div style="flex: 1;"></div>
+
+            <custom-section id='decryptSecret' button="Retrieve and Decrypt Secret" style="flex: 1;">
+                <section-field label placeholder="Encrypted Shared Secret"></section-field>
+                <section-field label placeholder="Bob's private key"></section-field>
+                <section-field label placeholder="Shared Secret"></section-field>
+                <doc>
+                    ## Generate Bob's Keypair
+                    Generates a new Kyber public/private key pair for Bob
+                    <br><br>
+                </doc>
+            </custom-section>
+
+
+        </div>
+
+        <br><br>
+        <hr><br><br>
+
+        <div style="display: flex; gap: 2em">
+
+            <custom-section id='deriveKey' button="Derive Symmetric Key" style="flex: 1;">
+                <section-field label placeholder="Shared Secret"></section-field>
+                <section-field label placeholder="Symmetric Key (AES-GCM)"></section-field>
+                <doc>
+                    ## Generate Bob's Keypair
+                    Generates a new Kyber public/private key pair for Bob
+                    <br><br>
+                </doc>
+            </custom-section>
+
+            <custom-section id='deriveKeyBob' button="Derive Symmetric Key" style="flex: 1;">
+                <section-field label placeholder="Shared Secret"></section-field>
+                <section-field label placeholder="Symmetric Key (AES-GCM)"></section-field>
+                <doc>
+                    ## Generate Bob's Keypair
+                    Generates a new Kyber public/private key pair for Bob
+                    <br><br>
+                </doc>
+            </custom-section>
+
+        </div>
+
+        <br><br>
+        <hr><br><br>
+
+
+        <!-- <div style="display: flex; gap: 2em">
+
+            <custom-section id='plaintextAlice' title="Alice's Message to Bob" style="flex: 1;">
+                <section-field label placeholder="Plaintext">
+                </section-field>
+                <doc>
+                    ## Plaintext Message
+                    The message to be encrypted and sent to Bob.
+                    <br><br>
+                </doc>
+            </custom-section>
+
+            <div style="flex: 1;"></div>
+
+        </div>
+
+        <br><br>
+        <hr><br><br> -->
+
+
+
+        <div style="display: flex; gap: 2em">
+
+            <custom-section id='encryptText' button="Encrypt Plaintext" style="flex: 1;">
+                <section-field label placeholder="Plaintext"></section-field>
+                <section-field label placeholder="Symmetric Key"></section-field>
+                <section-field label placeholder="IV"></section-field>
+                <section-field label placeholder="Ciphertext"></section-field>
+                <doc>
+                    ## Generate Bob's Keypair
+                    Generates a new Kyber public/private key pair for Bob
+                    <br><br>
+                </doc>
+            </custom-section>
+
+            <div style="flex: 1;"></div>
+
+        </div>
+
+        <br><br>
+        <hr><br><br>
+
+
+        <div style="display: flex; gap: 2em">
+
+            <div style="flex: 1;"></div>
+
+            <custom-section id='decryptCiphertext' button="Retrieve & Decrypt Ciphertext" style="flex: 1;">
+                <section-field label placeholder="Symmetric Key"></section-field>
+                <section-field label placeholder="IV"></section-field>
+                <section-field label placeholder="Ciphertext"></section-field>
+                <section-field label placeholder="Plaintext"></section-field>
+                <doc>
+                    ## Generate Bob's Keypair
+                    Generates a new Kyber public/private key pair for Bob
+                    <br><br>
+                </doc>
+            </custom-section>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
